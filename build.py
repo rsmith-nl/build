@@ -3,27 +3,32 @@
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
 # Created: 2016-04-24 17:06:48 +0200
-# Last modified: 2016-04-24 22:30:46 +0200
+# Last modified: 2017-08-23 01:06:37 +0200
 
 """Create runnable archives from program files and custom modules."""
 
 import os
 import py_compile
+import sys
 import tempfile
 import zipfile as z
 
 
-def mkarchive(name, modules, main='__main__.py',
-              shebang=b'#!/usr/bin/env python3\n'):
-    """Create a runnable archive.
+def mkarchive(name, modules, main='__main__.py'):
+    """
+    Create a runnable archive.
+
+    It encodes the same (major) version of Python as used for the build in the
+    call to ``env`` in the archive.
 
     Arguments:
         name: Name of the archive.
         modules: Module name or iterable of module names to include.
         main: Name of the main file. Defaults to __main__.py
-        shebang: Description of the interpreter to use. Defaults to Python 3.
     """
     std = '__main__.py'
+    vi = sys.version_info
+    shebang = '#!/usr/bin/env python{}\n'.format(vi.major).encode('ascii')
     if isinstance(modules, str):
         modules = [modules]
     if main != std:
