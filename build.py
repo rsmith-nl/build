@@ -4,7 +4,6 @@
 # Author: R.F. Smith <rsmith@xs4all.nl>
 # Created: 2016-04-24 17:06:48 +0200
 # Last modified: 2017-08-23 01:06:37 +0200
-
 """Create runnable archives from program files and custom modules."""
 
 import os
