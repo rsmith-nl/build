@@ -3,7 +3,7 @@
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
 # Created: 2016-04-24 17:06:48 +0200
-# Last modified: 2020-10-03T12:08:24+0200
+# Last modified: 2020-10-03T12:12:12+0200
 """Create runnable archives from program files and custom modules."""
 
 import os
@@ -24,6 +24,7 @@ def mkarchive(name, modules, main='__main__.py'):
         modules: Module name or iterable of module names to include.
         main: Name of the main file. Defaults to __main__.py
     """
+    print(f"Building {name}", end="... ")
     std = "__main__.py"
     shebang = "#!/usr/bin/env python{}\n"
     if isinstance(modules, str):
@@ -50,12 +51,12 @@ def mkarchive(name, modules, main='__main__.py'):
         archive.write(shebang)
         archive.write(archive_data)
     os.chmod(name, 0o755)
+    print("done.")
 
 
 if __name__ == '__main__':
     # nm = "program"
     # if os.name == "nt":
     #     nm += ".pyz"
-    # print(f"building {nm}")
     # mkarchive(nm, "module", main="console.py")
     pass
