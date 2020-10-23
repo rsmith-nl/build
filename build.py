@@ -12,7 +12,7 @@ import tempfile
 import zipfile as z
 
 
-def mkarchive(name, modules, main='__main__.py'):
+def mkarchive(name, modules, main="__main__.py"):
     """
     Create a runnable archive.
 
@@ -54,7 +54,7 @@ def mkarchive(name, modules, main='__main__.py'):
     print("done.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # nm = "program"
     # if os.name == "nt":
     #     nm += ".pyz"
